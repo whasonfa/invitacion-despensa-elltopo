@@ -46,7 +46,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 20px 80px;
+  padding: clamp(24px, 6vw, 48px) clamp(12px, 4vw, 20px) clamp(48px, 8vw, 80px);
 }
 
 
@@ -156,7 +156,7 @@ html, body {
 
 .subtitulo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(13px, 2.8vw, 17px);
+  font-size: clamp(15px, 3.5vw, 17px);
   font-weight: 300;
   color: var(--plata);
   margin-bottom: 32px;
@@ -209,7 +209,7 @@ html, body {
 
 /* ── CUERPO DEL MENSAJE ── */
 .cuerpo {
-  font-size: clamp(12px, 2.5vw, 13px);
+  font-size: clamp(13px, 3vw, 14px);
   font-weight: 300;
   line-height: 1.95;
   color: var(--plata);
@@ -263,13 +263,18 @@ html, body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 480px) {
+
+  /* Tarjeta */
   .card {
-    padding: 36px 22px;
+    padding: 32px 18px;
   }
 
+  /* Detalles en columna */
   .detalles {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 0;
+    margin: 24px 0;
+    padding: 18px 0;
   }
 
   .detalle-sep {
@@ -278,12 +283,75 @@ html, body {
 
   .detalle {
     border-bottom: 1px solid rgba(201, 168, 76, 0.13);
-    padding-bottom: 18px;
+    padding: 14px 0;
   }
 
   .detalle:last-child {
     border-bottom: none;
     padding-bottom: 0;
+  }
+
+  /* Separador principal más angosto */
+  .sep {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+
+  /* Logo un poco más chico */
+  .logo-wrap {
+    margin-bottom: 28px;
+    width: min(220px, 72vw);
+  }
+
+  /* Headline mínimo garantizado */
+  .headline {
+    font-size: clamp(28px, 8vw, 40px);
+    margin-bottom: 10px;
+  }
+
+  /* Subtitulo sin saltos forzados */
+  .subtitulo br {
+    display: none;
+  }
+
+  /* Cuerpo sin saltos forzados */
+  .cuerpo br {
+    display: none;
+  }
+
+  /* CTA ocupa más ancho en mobile */
+  .cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 24px;
+  }
+
+  /* Modal más compacto */
+  .modal-card {
+    padding: 36px 20px;
+    width: 94vw;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-logo {
+    width: min(130px, 50vw);
+    margin-bottom: 20px;
+  }
+
+  .modal-title {
+    font-size: clamp(22px, 7vw, 28px);
+  }
+
+  .modal-sub br {
+    display: none;
+  }
+
+  .modal-close {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }
 
